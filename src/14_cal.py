@@ -22,3 +22,31 @@ and does the following:
 import sys
 import calendar
 from datetime import datetime
+
+current_date = datetime.today()
+cal = calendar.TextCalendar(firstweekday=6)
+arg = sys.argv
+
+
+# If the user doesn't specify any input, your program should
+# print the calendar for the current month. The 'datetime'
+# module may be helpful for this.
+if(len(arg) == 1):
+    print(cal.formatmonth(int(current_date.year), int(current_date.month)))
+
+# If the user specifies one argument, assume they passed in a
+# month and render the calendar for that month of the current year.
+elif(len(arg) == 2):
+    print(cal.formatmonth(int(current_date.year), int(arg[1])))
+
+# If the user specifies two arguments, assume they passed in
+# both the month and the year. Render the calendar for that
+# month and year.
+elif(len(arg) == 3):
+    print(cal.formatmonth(int(arg[2]), int(arg[1])))
+
+# Otherwise, print a usage statement to the terminal indicating
+    # the format that your program expects arguments to be given.
+    # Then exit the program.
+else:
+    print(f"Please provide arguments in the format 'Python 14_cal.py (month) (year)' where month is between 1-12")
